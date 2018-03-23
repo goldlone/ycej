@@ -43,7 +43,7 @@ public class GeoService {
             time_dur = "night";
 
         JSONObject res = new JSONObject();
-        if(al.insertGPSInfo(new GPSInfo(username, longitude, latitude, new java.sql.Date(System.currentTimeMillis()), "", week))>0) {
+        if(al.insertGPSInfo(new GPSInfo(username, longitude, latitude, new java.sql.Date(System.currentTimeMillis()), time_dur, week))>0) {
             res.put("res", true);
         }else {
             res.put("res", false);
