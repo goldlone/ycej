@@ -62,4 +62,4 @@ where username=#{username} AND
 
 DELETE FROM footprint WHERE 1;
 
-
+select * from footprint where username='gold1';

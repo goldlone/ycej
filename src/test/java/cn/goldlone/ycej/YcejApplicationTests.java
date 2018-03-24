@@ -70,4 +70,5 @@ public class YcejApplicationTests {
 		int hour = Integer.parseInt(df.format(date));
 		System.out.println(hour);
 	}
+
 }

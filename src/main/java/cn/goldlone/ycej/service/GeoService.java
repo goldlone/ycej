@@ -19,12 +19,15 @@ public class GeoService {
     @Autowired
     private AllMapper al;
 
+    @Autowired
+    private ChealPoint cp;
+
     /**
      * 记录数据
      * @param object
      * @return
      */
-    public JSONObject receive(JSONObject object) {
+    public String receive(JSONObject object) {
         String username = object.getString("username");
         int week = object.getInt("week");
         double longitude = object.getDouble("longitude");
@@ -49,7 +52,7 @@ public class GeoService {
             res.put("res", false);
         }
 
-        return res;
+        return res.toString();
     }
 
 
@@ -58,14 +61,15 @@ public class GeoService {
      * @param object
      * @return
      */
-    public JSONObject train(JSONObject object) {
+    public String train(JSONObject object) {
         String username = object.getString("username");
         boolean isTrain = false;
-        ChealPoint cp = new ChealPoint();
+//        ChealPoint cp = new ChealPoint();
         isTrain = cp.train(username);
         JSONObject res = new JSONObject();
         res.put("isTrain", isTrain);
-        return res;
+        res.put("res", true);
+        return res.toString();
     }
 
 
@@ -74,7 +78,7 @@ public class GeoService {
      * @param object
      * @return
      */
-    public JSONObject detect(JSONObject object) {
+    public String detect(JSONObject object) {
         String username = object.getString("username");
         int week = object.getInt("week");
         double longitude = object.getDouble("longitude");
@@ -92,10 +96,11 @@ public class GeoService {
             time_dur = "after";
         else
             time_dur = "night";
-        ChealPoint cp = new ChealPoint();
+//        ChealPoint cp = new ChealPoint();
         isUsual = cp.detect(username, week, longitude, latitude, time_dur);
         JSONObject res = new JSONObject();
         res.put("isUsual", isUsual);
-        return res;
+        res.put("res", true);
+        return res.toString();
     }
 }

@@ -64,6 +64,10 @@ public class ChealPoint {
             // 早上、中午、下午、晚上的数据依次处理
             for(int j=0; j<timeDurs.length; j++) {
                 latLngList = am.selectLatLng(new SelectCount(username, "", weeks[i], timeDurs[j], Date.valueOf("2015-01-01"), new Date(System.currentTimeMillis())));
+                if(latLngList == null) {
+                    s_class[i][j] = "";
+                    break;
+                }
                 n = latLngList.size();
                 if(n != 0) {
                     minMaxGps = am.selectMinMax(new SelectCount(username, "", weeks[i], timeDurs[j], Date.valueOf("2015-01-01"), new Date(System.currentTimeMillis())));
